@@ -1,0 +1,42 @@
+<html>
+	<head th:replace="~{base :: head}">
+		<title>Bem-vindo!</title>
+	</head>
+	
+	<body>
+		
+		<div th:replace="~{base :: logo}"></div>
+		
+		<div class="container">
+			<div th:replace="~{base :: titulo('Novo pedido')}"></div>
+			<div class="card mt-3 mb-3">
+				<form th:object="${pedidoDto}" class="card-body" action="/pedido/novo" method="POST">
+					<div class="form-group">
+						<label for="nomeProduto">Produto:</label>
+						<input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="nome do produto">
+						<small>Informe o nome do produto.</small>
+						<div class="invalid-feedback" th:errors="*{nomeProduto}" style="color: red"></div>
+					</div>
+					<div class="form-group">
+						<label for="urlProduto">Url do produto:</label>
+						<input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="url do produto">
+						<small>Adicione qualquer url que represente o produto.</small>
+						<div class="invalid-feedback" th:errors="*{urlProduto}" style="color: red"></div>
+					</div>
+					<div class="form-group">
+						<label for="urlImagem">Url da imagem:</label>
+						<input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="url da imagem">
+						<small>Adicione a url da imagem do produto.</small>
+						<div class="invalid-feedback" th:errors="*{urlImagem}" style="color: red"></div>
+					</div>
+					<div class="form-group">
+						<label for="descricao">Descrição do produto:</label>
+						<textarea th:field="*{descricao}" class="form-control" placeholder="Adicione detalhes importantes.."> </textarea>
+					</div>
+					<button class="btn btn-primary" type="submit">Cadastrar</button>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>
